@@ -23,10 +23,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $token = $request->session()->token();
-
-        $token = csrf_token();
-
         return response("Товар создан");
     }
 
