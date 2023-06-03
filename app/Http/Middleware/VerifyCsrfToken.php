@@ -11,7 +11,10 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array<int, string>
      */
+
+    // TODO: temp, need delete
     protected $except = [
-        //
+        'http://localhost/products',
+        'http://localhost/products/*'
     ];
 }
