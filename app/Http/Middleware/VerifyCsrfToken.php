@@ -14,7 +14,5 @@ class VerifyCsrfToken extends Middleware
 
     // TODO: temp, need delete
     protected $except = [
-        'http://localhost/products',
-        'http://localhost/products/*'
     ];
 }
