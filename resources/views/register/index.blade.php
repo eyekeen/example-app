@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('page.title', 'Register')
+
 @section('content')
-    Home page
+    Register form
 @endsection

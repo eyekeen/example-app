@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('page.title', 'Login')
+
 @section('content')
-    Home page
+    Login form
 @endsection
