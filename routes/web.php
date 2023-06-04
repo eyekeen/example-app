@@ -1,36 +1,44 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Posts\CommentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TestController;
 use App\Http\Middleware\AccessCheck;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/test', TestController::class);
+
+
+Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('login.store');
+
+Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/{post}', [BlogController::class, 'show'])->name('blog.show');
+Route::post('blog/{post}/like', [BlogController::class, 'like'])->name('blog.like');
+
+
 
 Route::middleware(AccessCheck::class)->prefix('products')->group(function () {
     Route::get("/", [ProductController::class, 'index'])->name('product.index');
-
     Route::get("/create", [ProductController::class, 'create'])->name('product.create');
-
     Route::post("/", [ProductController::class, 'store'])->name('product.store');
-
     Route::get("/{product}", [ProductController::class, 'show'])->name('product.show');
-
     Route::get("/{product}/edit", [ProductController::class, 'edit'])->name('product.edit');
-
     Route::put("/{product}", [ProductController::class, 'update'])->name('product.update');
-
     Route::delete("/{product}", [ProductController::class, 'destroy'])->name('product.destroy');
 });
+
+Route::resource('posts/{post}/comments', CommentController::class)->only([
+    'index', 'show'
+]);
