@@ -15,11 +15,7 @@ class AccessCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->isMethod('get') && $request->get("access") !== 'yes' || 
-            $request->isMethod('post') && $request->post("access") !== 'yes' ||
-            $request->isMethod('put') && $request->get("access") !== 'yes' ||
-            $request->isMethod('delete') && $request->get("access") !== 'yes'
-            ) {
+        if ($request->get("access") !== 'yes') {
             return response("HTTP 403 Forbidden", 403);
         }
 

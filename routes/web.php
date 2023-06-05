@@ -38,11 +38,11 @@ Route::post('/blog/{post}/like', [BlogController::class, 'like'])->name('blog.li
 Route::middleware(AccessCheck::class)->prefix('products')->group(function () {
     Route::get("/", [ProductController::class, 'index'])->name('product');
     Route::get("/create", [ProductController::class, 'create'])->name('product.create');
-    Route::post("/", [ProductController::class, 'store'])->name('product.store');
+    Route::post("/", [ProductController::class, 'store'])->name('product.store')->withoutMiddleware(AccessCheck::class);
     Route::get("/{product}", [ProductController::class, 'show'])->name('product.show');
     Route::get("/{product}/edit", [ProductController::class, 'edit'])->name('product.edit');
-    Route::put("/{product}", [ProductController::class, 'update'])->name('product.update');
-    Route::delete("/{product}", [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::put("/{product}", [ProductController::class, 'update'])->name('product.update')->withoutMiddleware(AccessCheck::class);
+    Route::delete("/{product}", [ProductController::class, 'destroy'])->name('product.destroy')->withoutMiddleware(AccessCheck::class);
 });
 
 Route::resource('posts/{post}/comments', CommentController::class)->only([

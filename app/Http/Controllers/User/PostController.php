@@ -12,7 +12,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+
+        $post = [
+            'id' => 1,
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, ratione.',
+        ];
+
+
+        $posts = array_fill(0, 10, $post);
+
+        return view('user.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -20,7 +30,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
+        $post = [
+            'id' => 1,
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, ratione.',
+        ];
+
+        return view('user.posts.create', ['post' => $post]);
     }
 
     /**
@@ -34,17 +51,30 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($post)
     {
-        //
+
+        $post = [
+            'id' => 1,
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, ratione.',
+        ];
+
+        return view('user.posts.show', ['post' => $post]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($post)
     {
-        //
+        $post = [
+            'id' => 1,
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, ratione.',
+        ];
+
+        return view('user.posts.edit', ['post' => $post]);
     }
 
     /**
