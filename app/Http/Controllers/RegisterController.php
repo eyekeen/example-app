@@ -19,6 +19,11 @@ class RegisterController extends Controller
         $password = $request->input('password');
         $agreement = $request->boolean('agreement');
 
-        dd($name, $email, $password, $agreement);
+//        dd($name, $email, $password, $agreement);
+
+        if (true){
+            return redirect()->back()->withInput();
+        }
+        return redirect()->route('user');
     }
 }

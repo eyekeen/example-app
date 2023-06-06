@@ -36,7 +36,7 @@
                 <x-input type='password' name='password_confirmation' />
             </x-form-item>
             <x-form-item>
-                <x-checkbox name='agreement'>
+                <x-checkbox name='agreement' :checked="!!request()->old('agreement')">
                     {{ __('Agreement') }}
                 </x-checkbox>
             </x-form-item>

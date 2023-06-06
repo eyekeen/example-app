@@ -8,6 +8,8 @@ class LoginController extends Controller
 {
     public function index()
     {
+
+
         return view('login.index');
     }
 
@@ -20,6 +22,12 @@ class LoginController extends Controller
         $password= $request->input('password');
         $remember= $request->boolean('remember');
 
-        dd($email, $password, $remember);
+//        dd($email, $password, $remember);
+
+        if (true){
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->route('user');
     }
 }

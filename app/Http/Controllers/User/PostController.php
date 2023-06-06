@@ -47,8 +47,10 @@ class PostController extends Controller
     {
         $title = $request->input('title');
         $content = $request->input('content');
-        
-        dd($title, $content);
+
+//        dd($title, $content);
+
+        return redirect()->route('user.posts.show', 123);
     }
 
     /**
@@ -83,19 +85,21 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $post)
     {
         $title = $request->input('title');
         $content = $request->input('content');
-        
-        dd($title, $content);
+
+//        dd($title, $content);
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($post)
     {
-        //
+        return redirect()->route('user.posts');
     }
 }
