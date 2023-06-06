@@ -7,6 +7,9 @@
 <x-title>
     {{ __('Post list') }}
 </x-title>
+
+@include('blog.filter')
+
 @if (empty($posts))
 {{ __('Posts not found') }}
 @else
