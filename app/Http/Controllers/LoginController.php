@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function index(Session $session)
     {
-
 
         return view('login.index');
     }
@@ -17,16 +18,7 @@ class LoginController extends Controller
     public function store(Request $request)
     {
 
-
-        $email= $request->input('email');
-        $password= $request->input('password');
-        $remember= $request->boolean('remember');
-
-//        dd($email, $password, $remember);
-
-        if (true){
-            return redirect()->back()->withInput();
-        }
+        alert('Welcome!');
 
         return redirect()->route('user');
     }
