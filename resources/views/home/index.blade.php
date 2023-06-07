@@ -4,9 +4,7 @@
     <div class="text-center">
         <h1>
             Home page
-            <x-alert title='test alert' status='note'>
-                test message
-            </x-alert>
+            <x-alert type="warning" title="title" message="message"/>
         </h1>
     </div>
 @endsection

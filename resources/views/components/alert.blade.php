@@ -1,12 +1,5 @@
-@props(['title' => '', 'status' => 'success'])
-
-@php
-  if($status == 'note'){
-    $status = 'info';
-  }
-@endphp
-
-<div class="alert alert-{{ $status }}" role="alert">
-  <h4 class="alert-heading">{{ $title }}</h4>
- {{ $slot }}
+<div class="alert alert-{{ $type }}" role="alert">
+    <h3 class="alert-heading">{{ $title }}</h3>
+    <hr>
+    {{ $message }}
 </div>
