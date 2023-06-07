@@ -3,7 +3,7 @@
         <div class="mb-2">
             {{ $link }}
         </div>
-    @endisset    
+    @endisset
 
     <div class="d-flex justify-content-between">
         <h1 class="h2 m-0">
@@ -16,3 +16,5 @@
         </div>
     </div>
 </div>
+
+<x-errors />

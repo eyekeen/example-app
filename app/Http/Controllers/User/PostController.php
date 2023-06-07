@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StorePostRequest;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Validation;
 
 class PostController extends Controller
 {
@@ -43,13 +46,32 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
+//        $validated = $request->validated();
 
-        $title = $request->input('title');
-        $content = $request->input('content');
+//        $validated = $request->validate([
+//            'title' => ['required', 'string', 'max:100'],
+//            'content' => ['required', 'string', 'max:10000'],
+//        ]);
+//
+//        $validated = validator($request->all(), [
+//            'title' => ['required', 'string', 'max:100'],
+//            'content' => ['required', 'string', 'max:10000'],
+//        ])->validate();
 
-//        dd($title, $content);
+//        if (true) {
+//            throw ValidationException::withMessages([
+//                    'account' => 'Malo deneg'
+//                ]
+//            );
+//        }
+
+        $validated = validate($request->all(), [
+            'title' => ['required', 'string', 'max:100'],
+            'content' => ['required', 'string', 'max:10000'],
+        ]);
+
         alert(__('Created'));
         return redirect()->route('user.posts.show', 123);
     }
@@ -88,10 +110,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $post)
     {
-        $title = $request->input('title');
-        $content = $request->input('content');
+        $validated = validate($request->all(), [
+            'title' => ['required', 'string', 'max:100'],
+            'content' => ['required', 'string', 'max:10000'],
+        ]);
 
-//        dd($title, $content);
+        alert(__('Saved'));
 
         return redirect()->back();
     }

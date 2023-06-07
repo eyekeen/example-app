@@ -15,3 +15,9 @@ if(!function_exists('alert')){
         session(['alert' => $text]);
     }
 }
+
+if(!function_exists('validate')){
+    function validate(array $attributes, array $rules){
+        return validator($attributes, $rules)->validate();
+    }
+}

@@ -28,10 +28,12 @@ class CarController extends Controller
 
     public function store(Request $request)
     {
-        $brand = $request->input('brand');
-        $model = $request->input('model');
-        $description = $request->input('description');
 
+        $validated = validate($request->all(), [
+            'brand' => ['required', 'string', 'max:100'],
+            'model' => ['required', 'string', 'max:100'],
+            'description' => ['nullable', 'string'],
+        ]);
 
         alert(__('Created'));
         return redirect()->route('cars.show', 123);
