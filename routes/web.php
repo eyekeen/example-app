@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\CarController;
 use App\Http\Middleware\AccessCheck;
 use Illuminate\Support\Facades\Route;
 
@@ -48,3 +49,9 @@ Route::middleware(AccessCheck::class)->prefix('products')->group(function () {
 Route::resource('posts/{post}/comments', CommentController::class)->only([
     'index', 'show'
 ]);
+
+Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+Route::post("/cars", [CarController::class, 'store'])->name('cars.store');
+Route::get("/cars/create", [CarController::class, 'create'])->name('cars.create');
+Route::get("/cars/{car}", [CarController::class, 'show'])->name('cars.show');
+
