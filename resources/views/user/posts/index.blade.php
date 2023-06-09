@@ -20,7 +20,7 @@
 
 @else
 
-<div class="row">
+
     @foreach ($posts as $post)
 
     <div class="mb-3">
@@ -31,12 +31,13 @@
         </h2>
 
         <div class="small text-muted">
-            {{ now()->format('d.m.Y H:i:s') }}
+            {{ $post->published_at?->diffForHumans() }}
         </div>
     </div>
 
     @endforeach
-</div>
+
+    {{ $posts->links() }}
 
 @endif
 

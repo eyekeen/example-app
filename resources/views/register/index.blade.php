@@ -18,6 +18,7 @@
     </x-card-header>
 
     <x-card-body>
+        <x-errors />
         <x-form action="{{ route('register.store') }}" method="post">
             <x-form-item>
                 <x-label required> {{ __('Name') }} </x-label>
@@ -37,7 +38,7 @@
             </x-form-item>
             <x-form-item>
                 <x-checkbox name='agreement' :checked="!!request()->old('agreement')">
-                    {{ __('Agreement') }}
+                    {{ __('Consent to the processing of personal data') }}
                 </x-checkbox>
             </x-form-item>
 
