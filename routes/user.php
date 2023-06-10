@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\PostController;
+use App\Http\Controllers\User\DonateController;
 
 
 Route::prefix('user')->group(function () {
@@ -14,4 +15,6 @@ Route::prefix('user')->group(function () {
     Route::get("posts/{post}/edit", [PostController::class, 'edit'])->name('user.posts.edit');
     Route::put("posts/{post}", [PostController::class, 'update'])->name('user.posts.update');
     Route::delete("posts/{post}", [PostController::class, 'destroy'])->name('user.posts.destroy');
+
+    Route::get('/donates', DonateController::class);
 });
